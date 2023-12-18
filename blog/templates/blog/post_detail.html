@@ -14,8 +14,10 @@
                 Written by: {{ post.author }}
             </small>
             <span class="d-flex justify-content-end">
+              {% if user.is_authenticated and request.user == post.author %}
                 <a class="btn btn-primary btn-sm me-1" href="{% url 'blog:post_edit' post.pk %}" role="button">Update</a>
                 <a class="btn btn-danger btn-sm" href="{% url 'blog:post_delete' post.pk %}" role="button">Delete</a>
+              {% endif %}
             </span>
           </blockquote>
         </div>
