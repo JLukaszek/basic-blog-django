@@ -3,7 +3,6 @@
 {% block title %}Main Blog Page{% endblock title %}
 
 {% block body %}
-
   <h1 class="text-primary mt-2">All posts:</h1>
   {% for post in post_list %}
     <div class="card border-dark mb-3 mt-2" style="width: 30rem;">
@@ -18,5 +17,5 @@
         </div>
     </div>
   {% endfor %}
-
+  {% include 'pagination.html' %}
 {% endblock body %}
