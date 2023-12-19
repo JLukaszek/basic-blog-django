@@ -1,5 +1,5 @@
 {% extends 'blog/_base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block body %}
@@ -7,7 +7,7 @@
     <h3>Are You sure You want to delete this post: {{ post.title }}</h3>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button class="btn btn-danger">Delete</button>
     </form>
 

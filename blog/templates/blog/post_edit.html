@@ -1,5 +1,5 @@
 {% extends 'blog/_base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block body %}
@@ -7,7 +7,7 @@
     <h2>Edit post: {{ post.title }}</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button class="btn btn-primary">Save changes</button>
     </form>
 
