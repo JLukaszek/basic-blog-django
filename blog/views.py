@@ -7,7 +7,7 @@ from .models import Post
 
 class HomePageView(ListView):
     model = Post
-    paginate_by = 1
+    paginate_by = 4
     template_name = 'blog/blog.html'
 
 
