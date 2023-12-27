@@ -1,5 +1,5 @@
 {% extends 'blog/_base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block body %}
@@ -22,4 +22,33 @@
           </blockquote>
         </div>
     </div>
+        <div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-success" type="submit">Comment</button>
+            </form>
+        </div>
+        <div class="card border-dark mb-3 mt-2" style="width: 30rem;">
+            <div class="card-header text-center">
+              <h5>Comments:</h5>
+            </div>
+            {% if post.comment_set.all %}
+                {% for comment in post.comment_set.all %}
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                             <div class="card border-dark mb-3 mt-2">
+                              <p>{{ comment.body }} </p>
+                              <small class="text-capitalize fst-italic">
+                                Commented by: {{ comment.author }}
+                              </small>
+                             </div>
+                        </blockquote>
+                    </div>
+                {% endfor %}
+            {% else %}
+              <p class="text-center mt-3">There are no comments yet.</p>
+            {% endif %}
+        </div>
+
 {% endblock body %}
